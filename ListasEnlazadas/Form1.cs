@@ -42,5 +42,18 @@ namespace ListasEnlazadas
             lse.EliminarPila();
             MostrarPila();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            lse.InsertarOrdenado(Int32.Parse(textBox1.Text));
+            textBox1.Clear();
+            textBox1.Focus();
+            MostrarPila();
+        }
     }
 }

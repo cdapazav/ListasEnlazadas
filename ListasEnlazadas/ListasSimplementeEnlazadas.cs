@@ -52,5 +52,51 @@ namespace ListasEnlazadas
                 p = null;
             }
         }
+
+        public void InsertarOrdenado(int elemento)
+        {
+            Nodo p,q,r;
+            if(tope == null)
+            {
+                tope = new Nodo();
+                tope.Informacion = elemento;
+                tope.Enlace = null;
+            }
+            else
+            {
+                if(elemento < tope.Informacion)
+                {
+                    p = new Nodo();
+                    p.Informacion = elemento;
+                    p.Enlace = tope;
+                    tope = p;
+                }
+                else
+                {
+                    r = tope;
+                    q = tope.Enlace;
+
+                    while(q!=null && elemento > q.Informacion)
+                    {
+                        r = q;
+                        q = q.Enlace;
+                    }
+                    if(q!=null)
+                    {
+                        p = new Nodo();
+                        p.Informacion = elemento;
+                        r.Enlace = p;
+                        p.Enlace = q;
+                    }
+                    else
+                    {
+                        p = new Nodo();
+                        p.Informacion = elemento;
+                        p.Enlace = null;
+                        r.Enlace = p;
+                    }
+                }
+            }
+        }
     }
 }
